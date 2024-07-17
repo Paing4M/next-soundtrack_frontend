@@ -4,15 +4,12 @@ import SongList from '@/components/song/SongList'
 import axios from 'axios'
 
 const getSongs = async (token: string = '') => {
-	const res = await axios.get(
-		process.env.NEXT_PUBLIC_BACKEND_URL + '/api/music',
-		{
-			headers: {
-				Accept: 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		}
-	)
+	const res = await axios.get(process.env.BACKEND_URL + '/api/music', {
+		headers: {
+			Accept: 'application/json',
+			Authorization: `Bearer ${token}`,
+		},
+	})
 	return res.data
 }
 
