@@ -2,13 +2,15 @@
 
 import usePlayer from '@/hooks/usePlayer'
 import { useEffect, useRef, useState } from 'react'
-import MobilePlayer from './MobilePlayer'
+// import MobilePlayer from './MobilePlayer'
 import DesktopPlayer from './DesktopPlayer'
 import { addLibrary } from '@/actions/song'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
-import { constants } from 'buffer'
 import { useEventBus } from '@/providers/EventBusProvider'
+import dynamic from 'next/dynamic'
+
+const MobilePlayer = dynamic(() => import('./MobilePlayer'), { ssr: false })
 
 const PlayerContent = ({
 	song: initial,
