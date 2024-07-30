@@ -70,12 +70,12 @@ const PlayerContent = ({
 	}
 
 	useEffect(() => {
-		if (isPlaying && song) {
+		if (isPlaying) {
 			audioRef?.current?.play()
 			const audioDuration = audioRef?.current?.duration
 			setDuration(audioDuration!)
 		}
-	}, [isPlaying, song])
+	}, [isPlaying])
 
 	const handleClick = () => {
 		if (!isPlaying) {

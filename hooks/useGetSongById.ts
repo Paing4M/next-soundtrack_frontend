@@ -12,6 +12,7 @@ const useGetSongById = (id: string) => {
 		if (!id) return
 
 		const getSongUrl = async () => {
+			// setLoading(true)
 			try {
 				const res = await axios.get(
 					`${process.env.BACKEND_URL}/api/music/stream/${id}`,
@@ -28,6 +29,7 @@ const useGetSongById = (id: string) => {
 				if (res.data) {
 					const blob = new Blob([res.data], { type: 'audio/mpeg' })
 					const url = URL.createObjectURL(blob)
+					setLoading(false)
 					setSongUrl(url)
 					setError(null)
 				}
@@ -41,7 +43,6 @@ const useGetSongById = (id: string) => {
 		}
 
 		const getActiveSong = async () => {
-			setLoading(true)
 			try {
 				const res = await getSong(id)
 				if (res) {
@@ -56,8 +57,9 @@ const useGetSongById = (id: string) => {
 				}
 			}
 		}
-		getActiveSong()
+
 		getSongUrl()
+		getActiveSong()
 	}, [id])
 
 	return useMemo(
