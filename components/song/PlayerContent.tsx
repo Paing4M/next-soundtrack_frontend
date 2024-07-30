@@ -12,7 +12,14 @@ import dynamic from 'next/dynamic'
 
 const MobilePlayer = dynamic(() => import('./MobilePlayer'), { ssr: false })
 
-const PlayerContent = ({ song }: { song: MusicType }) => {
+const PlayerContent = ({
+	song: initial,
+}: // songUrl,
+{
+	song: MusicType
+	// songUrl: string
+}) => {
+	const [song, setSong] = useState<MusicType>(initial)
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [duration, setDuration] = useState(0)
 	const [volume, setVolume] = useState(0.8)
