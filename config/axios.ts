@@ -2,7 +2,7 @@ import axios, { AxiosRequestHeaders } from 'axios'
 import { getSession } from 'next-auth/react'
 
 const Axios = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_BACKEND_URL + '/api',
+	baseURL: process.env.BACKEND_URL + '/api',
 	withCredentials: true,
 	withXSRFToken: true,
 })
@@ -11,6 +11,7 @@ const Axios = axios.create({
 
 Axios.interceptors.request.use(
 	async (config) => {
+console.log(process.env.BACKEND_URL)
 		try {
 			const token = await getSession()
 
