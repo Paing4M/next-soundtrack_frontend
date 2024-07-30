@@ -7,6 +7,8 @@ const Axios = axios.create({
 	withXSRFToken: true,
 })
 
+console.log('url > ' , process.env.BACKEND_UR)
+
 Axios.interceptors.request.use(
 	async (config) => {
 		try {
