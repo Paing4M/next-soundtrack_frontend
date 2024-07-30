@@ -2,7 +2,7 @@ import axios, { AxiosRequestHeaders } from 'axios'
 import { getSession } from 'next-auth/react'
 
 const Axios = axios.create({
-	baseURL: process.env.BACKEND_URL + '/api',
+	baseURL: process.env.NEXT_PUBLIC_BACKEND_URL + '/api',
 	withCredentials: true,
 	withXSRFToken: true,
 })

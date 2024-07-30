@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
 export const login = async (prevState: any, formData: FormData) => {
-console.log('url > ' , process.env.BACKEND_UR)
+
 	try {
 		const data = {
 			email: formData.get('email'),
