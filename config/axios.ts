@@ -7,11 +7,8 @@ const Axios = axios.create({
 	withXSRFToken: true,
 })
 
-
-
 Axios.interceptors.request.use(
 	async (config) => {
-console.log(process.env.BACKEND_URL)
 		try {
 			const token = await getSession()
 
