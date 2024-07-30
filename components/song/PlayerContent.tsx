@@ -20,7 +20,7 @@ const PlayerContent = ({
 	songUrl: string
 }) => {
 	const [song, setSong] = useState<MusicType>(initial)
-	const [isPlaying, setIsPlaying] = useState(true)
+	const [isPlaying, setIsPlaying] = useState(false)
 	const [duration, setDuration] = useState(0)
 	const [volume, setVolume] = useState(0.8)
 	const [currentTime, setCurrentTime] = useState(0)
@@ -30,6 +30,10 @@ const PlayerContent = ({
 	const player = usePlayer()
 	const { data } = useSession()
 	const { emit } = useEventBus()
+
+	useEffect(() => {
+		setIsPlaying(true)
+	}, [song])
 
 	const onPlayNext = () => {
 		if (player.ids?.length == 0) {
@@ -66,12 +70,12 @@ const PlayerContent = ({
 	}
 
 	useEffect(() => {
-		if (isPlaying) {
+		if (isPlaying && song) {
 			audioRef?.current?.play()
 			const audioDuration = audioRef?.current?.duration
 			setDuration(audioDuration!)
 		}
-	}, [isPlaying])
+	}, [isPlaying, song])
 
 	const handleClick = () => {
 		if (!isPlaying) {
