@@ -5,7 +5,7 @@ export const getSongs = async (
 	cursor: string | null = null
 ) => {
 	const res = await Axios.get('/music?search=' + search + '&cursor=' + cursor)
-	console.log(search)
+	//console.log(search)
 	return res.data
 }
 
@@ -36,7 +36,7 @@ export const addSong = async (prevState: any, formData: FormData) => {
 			}
 		}
 	} catch (error: any) {
-		console.log(error)
+		//console.log(error)
 		if (error?.response?.status == 422) {
 			return {
 				errors: error?.response?.data?.errors,

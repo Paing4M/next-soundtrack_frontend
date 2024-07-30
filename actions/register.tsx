@@ -11,7 +11,7 @@ export const register = async (prevState: any, formData: FormData) => {
 		}
 
 		const res = await Axios.post('/auth/register', data)
-		console.log(res)
+		//console.log(res)
 		if (res?.data?.status == 201) {
 			signIn('credentials', {
 				email: data.email,
@@ -21,7 +21,7 @@ export const register = async (prevState: any, formData: FormData) => {
 			toast.success(res?.data?.message)
 		}
 	} catch (error: any) {
-		console.log('login err', error)
+		//console.log('login err', error)
 		if (error?.response?.status == 422) {
 			return {
 				errors: error.response.data.errors,

@@ -21,7 +21,7 @@ export const login = async (prevState: any, formData: FormData) => {
 			toast.success(res?.data?.message)
 		}
 	} catch (error: any) {
-		console.log('login err', error)
+		//console.log('login err', error)
 		if (error?.response?.status == 422 || error?.response?.status == 401) {
 			return {
 				errors: error.response.data.errors,

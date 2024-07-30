@@ -10,6 +10,6 @@ export const logout = async () => {
 			signOut()
 		}
 	} catch (error) {
-		console.log(error)
+		//console.log(error)
 	}
 }
