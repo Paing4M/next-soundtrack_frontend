@@ -14,10 +14,10 @@ const MobilePlayer = dynamic(() => import('./MobilePlayer'), { ssr: false })
 
 const PlayerContent = ({
 	song: initial,
-	songUrl,
-}: {
+}: // songUrl,
+{
 	song: MusicType
-	songUrl: string
+	// songUrl: string
 }) => {
 	const [song, setSong] = useState<MusicType>(initial)
 	const [isPlaying, setIsPlaying] = useState(false)
@@ -32,7 +32,7 @@ const PlayerContent = ({
 	const { emit } = useEventBus()
 
 	useEffect(() => {
-		setIsPlaying(true)
+		if (song) setIsPlaying(true)
 	}, [song])
 
 	const onPlayNext = () => {
@@ -40,7 +40,7 @@ const PlayerContent = ({
 			return
 		}
 
-		setIsPlaying(true)
+		// setIsPlaying(true)
 
 		const currentIdx = player.ids?.findIndex((i) => i == player.activeId)
 		const nextSong = player.ids?.[currentIdx! + 1]
@@ -57,7 +57,7 @@ const PlayerContent = ({
 			return
 		}
 
-		setIsPlaying(true)
+		// setIsPlaying(true)
 
 		const currentIdx = player.ids?.findIndex((i) => i == player.activeId)
 		const prevSong = player.ids?.[currentIdx! - 1]
@@ -75,7 +75,7 @@ const PlayerContent = ({
 			const audioDuration = audioRef?.current?.duration
 			setDuration(audioDuration!)
 		}
-	}, [isPlaying])
+	}, [isPlaying, song])
 
 	const handleClick = () => {
 		if (!isPlaying) {
@@ -176,7 +176,7 @@ const PlayerContent = ({
 				onLoadedMetadata={handleLoadedMetadata}
 				onEnded={handleEnded}
 				ref={audioRef}
-				src={songUrl}
+				src={process.env.BACKEND_URL + '/storage/' + song.song}
 				className='hidden'
 				aria-label='audio'
 			></audio>
