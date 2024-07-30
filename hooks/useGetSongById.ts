@@ -14,7 +14,7 @@ const useGetSongById = (id: string) => {
 		const getSongUrl = async () => {
 			try {
 				const res = await axios.get(
-					`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/music/stream/${id}`,
+					`${process.env.BACKEND_URL}/api/music/stream/${id}`,
 					{
 						headers: {
 							Accept: 'audio/mpeg',
