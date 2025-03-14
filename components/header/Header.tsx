@@ -19,7 +19,7 @@ const Header = ({ user }: { user: CustomUser }) => {
 						<HeartIcon className='w-8' />
 					</div>
 
-					<p className='pr-4 text-sm tracking-wider'>Your Liked Song</p>
+					<p className='pr-4 text-sm tracking-wider'>Your Favorite</p>
 				</Link>
 			</div>
 		</div>
